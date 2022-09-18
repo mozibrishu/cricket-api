@@ -10,6 +10,8 @@ const cache = apicache.middleware
 const matchdata = require('../utlis/app.json');
 const { dummydata } = require('../utlis/error.js');
 const { errormsg } = require('../utlis/msg.js');
+const cors = require('cors');
+router.use(cors());
 
 const apiRequestLimiter = rateLimit({
     windowMs: 1 * 60 * 1000,
