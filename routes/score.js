@@ -47,6 +47,7 @@ router.get('/', cache('2 minutes'), apiRequestLimiter, function(req, res) {
 
         var title = $("h4.ui-header").text();
         var update = $("div.cbz-ui-status").text();
+        var bowlTeamScore = $('span.ui-bowl-team-scores').text();
         var currentscore = $('span.ui-bat-team-scores').text();
         var batsman = $('span.bat-bowl-miniscore').eq(0).text();
         var batsmanrun = $('td[class="cbz-grid-table-fix "]').eq(6).text();
@@ -80,6 +81,7 @@ router.get('/', cache('2 minutes'), apiRequestLimiter, function(req, res) {
             title: title || "Data Not Found",
             update: update || "Data Not Found",
             current: currentscore || "Data Not Found",
+            bowlTeam: bowlTeamScore || "Data Not Found",
             batsman: batsman || "Data Not Found",
             batsmanrun: batsmanrun || "Data Not Found",
             ballsfaced: ballsfaced || "Data Not Found",
