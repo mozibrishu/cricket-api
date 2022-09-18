@@ -21,7 +21,7 @@ const apiRequestLimiter = rateLimit({
     }
 })
 
-router.get('/', cache('2 minutes'), apiRequestLimiter, function(req, res) {
+router.get('/', cache('10 seconds'), apiRequestLimiter, function(req, res) {
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
     res.header('Access-Control-Allow-Methods', 'GET');
     res.header('X-Frame-Options', 'DENY');
