@@ -5,7 +5,8 @@ const port = process.env.PORT || 3000;
 
 var allowedOrigins = ['http://localhost:8080',
     'https://score.sanweb.info',
-    'https://sanweb.info/'
+    'https://sanweb.info/',
+    'http://127.0.0.1:5500'
 ];
 
 app.use(cors({

@@ -10,8 +10,6 @@ const cache = apicache.middleware
 const matchdata = require('../utlis/app.json');
 const { dummydata } = require('../utlis/error.js');
 const { errormsg } = require('../utlis/msg.js');
-const cors = require('cors');
-router.use(cors());
 
 const apiRequestLimiter = rateLimit({
     windowMs: 1 * 60 * 1000,
@@ -22,8 +20,7 @@ const apiRequestLimiter = rateLimit({
         )
     }
 })
-
-router.get('/', cache('10 seconds'), apiRequestLimiter, function(req, res) {
+router.get('/', cache('5 seconds'), apiRequestLimiter, function(req, res) {
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
     res.header('Access-Control-Allow-Methods', 'GET');
     res.header('X-Frame-Options', 'DENY');
@@ -36,12 +33,11 @@ router.get('/', cache('10 seconds'), apiRequestLimiter, function(req, res) {
 
     let str = match_url || '';
     let live_url = str.replace('www', 'm');
-
     axios({
         method: 'GET',
         url: live_url,
         headers: {
-            'User-Agent': rua
+            'User-Agent': rua,
         }
     }).then(function(response) {
 
